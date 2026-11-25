@@ -1,0 +1,129 @@
+(node:24008) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+newman
+
+Lab05 - VERIFIED 9 Test Cases
+
+□ TC01 - Амжилттай бүртгэл
+└ Setup student
+  PUT http://localhost:3000/students/LAB05_TC01_STUDENT [200 OK, 281B, 51ms]
+  √  HTTP 200
+
+└ Setup course
+  PUT http://localhost:3000/courses/LAB05_TC01_COURSE [200 OK, 262B, 5ms]
+  √  HTTP 200
+
+└ Registration
+  POST http://localhost:3000/registrations [201 Created, 317B, 4ms]
+  √  HTTP 201
+  √  Result OK
+  √  Numeric registrationID
+
+□ TC02 - Оюутан байхгүй
+└ Setup course
+  PUT http://localhost:3000/courses/LAB05_TC02_COURSE [200 OK, 255B, 4ms]
+  √  HTTP 200
+
+└ Registration
+  POST http://localhost:3000/registrations [200 OK, 192B, 5ms]
+  √  HTTP 200
+  √  Result ERROR_NO_STUDENT
+
+□ TC03 - Идэвхгүй оюутан
+└ Setup student
+  PUT http://localhost:3000/students/LAB05_TC03_STUDENT [200 OK, 283B, 3ms]
+  √  HTTP 200
+
+└ Setup course
+  PUT http://localhost:3000/courses/LAB05_TC03_COURSE [200 OK, 262B, 3ms]
+  √  HTTP 200
+
+└ Registration
+  POST http://localhost:3000/registrations [200 OK, 198B, 5ms]
+  √  HTTP 200
+  √  Result ERROR_INACTIVE_STUDENT
+
+□ TC04 - Хичээл байхгүй
+└ Setup student
+  PUT http://localhost:3000/students/LAB05_TC04_STUDENT [200 OK, 274B, 8ms]
+  √  HTTP 200
+
+└ Registration
+  POST http://localhost:3000/registrations [200 OK, 191B, 4ms]
+  √  HTTP 200
+  √  Result ERROR_NO_COURSE
+
+□ TC05 - Суурь хичээл дутуу
+└ Setup student
+  PUT http://localhost:3000/students/LAB05_TC05_STUDENT [200 OK, 274B, 4ms]
+  √  HTTP 200
+
+└ Setup course
+  PUT http://localhost:3000/courses/LAB05_TC05_COURSE [200 OK, 262B, 2ms]
+  √  HTTP 200
+
+└ Registration
+  POST http://localhost:3000/registrations [200 OK, 195B, 6ms]
+  √  HTTP 200
+  √  Result ERROR_PREREQUISITES
+
+□ TC06 - Оюутан болон хичээл байхгүй
+└ Registration
+  POST http://localhost:3000/registrations [200 OK, 192B, 4ms]
+  √  HTTP 200
+  √  Result ERROR_NO_STUDENT
+
+□ TC07 - Идэвхгүй оюутан ба хичээл байхгүй
+└ Setup student
+  PUT http://localhost:3000/students/LAB05_TC07_STUDENT [200 OK, 276B, 3ms]
+  √  HTTP 200
+
+└ Registration
+  POST http://localhost:3000/registrations [200 OK, 198B, 2ms]
+  √  HTTP 200
+  √  Result ERROR_INACTIVE_STUDENT
+
+□ TC08 - Суурь хичээл шаарддаггүй
+└ Setup student
+  PUT http://localhost:3000/students/LAB05_TC08_STUDENT [200 OK, 274B, 4ms]
+  √  HTTP 200
+
+└ Setup course
+  PUT http://localhost:3000/courses/LAB05_TC08_COURSE [200 OK, 255B, 3ms]
+  √  HTTP 200
+
+└ Registration
+  POST http://localhost:3000/registrations [201 Created, 317B, 2ms]
+  √  HTTP 201
+  √  Result OK
+  √  Numeric registrationID
+
+□ TC09 - studentID талбар дутуу
+└ Setup course
+  PUT http://localhost:3000/courses/LAB05_TC09_COURSE [200 OK, 255B, 2ms]
+  √  HTTP 200
+
+└ Registration
+  POST http://localhost:3000/registrations [400 Bad Request, 202B, 3ms]
+  √  HTTP 400
+  √  Result ERROR_BAD_REQUEST
+
+┌─────────────────────────┬──────────────────┬─────────────────┐
+│                         │         executed │          failed │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              iterations │                1 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│                requests │               21 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│            test-scripts │               21 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│      prerequest-scripts │                0 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              assertions │               32 │               0 │
+├─────────────────────────┴──────────────────┴─────────────────┤
+│ total run duration: 1832ms                                   │
+├──────────────────────────────────────────────────────────────┤
+│ total data received: 1.77kB (approx)                         │
+├──────────────────────────────────────────────────────────────┤
+│ average response time: 6ms [min: 2ms, max: 51ms, s.d.: 10ms] │
+└──────────────────────────────────────────────────────────────┘
